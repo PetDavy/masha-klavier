@@ -1,0 +1,106 @@
+$primary-color: orange;
+
+.Home {
+	justify-content: flex-end;
+  align-items: center;
+
+  background: url('../../media/main-showcase.jpg') no-repeat center/cover;
+  
+  &__paragraph {
+    max-width: 70%;
+    padding: 7px 0;
+    line-height: 1.8;
+  }
+
+  &__buttons {
+    padding: 7px 0;
+  }
+
+  &__btn-about {
+    position: relative;
+    background: $primary-color;
+    color: #fff;
+    border: none;
+
+    &::before {
+      position: absolute;
+      top:0;
+      left:-20%;
+      content: '';
+      transform: skewX(-40deg);
+      background:#4d4d4d; 
+      width: 0%;
+      height: 100%;
+
+      z-index: 1;
+      transition: width 0.5s;
+    }
+
+    &:hover::before {
+      width: 130%;
+    }
+  }
+
+  &__btn-portfolio {
+    position: relative;
+    color: $primary-color;
+    border:1px solid $primary-color;
+    background-color: transparent;
+
+    &:hover {
+      color:#fff;
+    }
+
+    &::before {
+      position: absolute;
+      top:0;
+      left:-20%;
+
+      content: '';
+      transform: skewX(-40deg);
+      background:$primary-color; 
+      width: 0%;
+      height: 100%;
+
+      z-index: 1;
+      transition: width 0.4s;
+    }
+
+    &:hover::before {
+      width: 130%;
+    }
+  }
+}
+
+.Home__text {
+	display: flex;
+	width: 50%;
+	height: 100%;
+	flex-direction: column;
+  justify-content: center;
+  
+  color:#fff;
+
+  &--small, &--large {
+    padding:7px 0;
+  }
+
+  &--small {
+    font-weight: 200;
+    text-transform: uppercase;
+  }
+
+  &--large {
+    font-size: 2.8rem;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.TypingText {
+	color: orange;
+	border-right: 1px solid #ccc;
+	font-size: 3rem;
+}
