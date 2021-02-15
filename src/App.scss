@@ -29,15 +29,23 @@ p {
     display: flex;
     position: absolute;
     top: 0;
-    // left: 100%;
     left: 0;
     width: 100%;
     height: 100vh;
+
+    transform: translateX(100vw);
+    transition: transform 0.8s;
     overflow-y: auto;
+  }
+
+  & .active {
+    transform: translateX(0);
+    z-index: 2;
   }
 }
 
 .btn {
+  position: relative;
 	display: inline-block;
 	margin-right: 20px;
   padding:13px 30px;
@@ -51,6 +59,7 @@ p {
 	text-decoration: none;
   
   overflow:hidden;
+  z-index: 3;
   cursor: pointer;
   
   & i {

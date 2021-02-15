@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-export const MenuItem = ({ block, isOpen, isActive, delay, clickHandler }) => {
+export const MenuItem = (props) => {
+  const { block, isOpen, isActive, delay, clickHandler, setIsOpen, id } = props;
   const [name, iconClass] = block;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -13,13 +14,20 @@ export const MenuItem = ({ block, isOpen, isActive, delay, clickHandler }) => {
     }, isOpen ? delay : 0);
   }, [isOpen]);
 
+  const triggerLink = () => {
+    clickHandler(id);
+    setIsOpen(false);
+  };
+
   return (
     <li className="menu__item">
       <div
-        id={name}
         className={classNames('menu__link', {
           'menu--active': isActive && isVisible,
         })}
+        onClick={triggerLink}
+        role="button"
+        aria-hidden="true"
       >
         <i
           className={classNames('fas', 'menu__icon', iconClass, {
@@ -46,4 +54,6 @@ MenuItem.propTypes = {
   isActive: PropTypes.bool.isRequired,
   delay: PropTypes.number.isRequired,
   clickHandler: PropTypes.func.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
