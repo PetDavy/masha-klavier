@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { MenuItem } from './MenuItem';
-import { Overlay } from './Overlay';
 import './Navigation.scss';
 
 const MENU_BLOCKS = {
@@ -11,15 +10,11 @@ const MENU_BLOCKS = {
   Contact: 'fa-comments',
 };
 
-export const Navigation = ({ activeItem, setActiveItem }) => {
-  const [isOpen, setIsOpen] = useState(false);
+export const Navigation = (props) => {
+  const { isOpen, setIsOpen, activeItem, setActiveItem } = props;
 
   const triggerNavigation = () => {
     setIsOpen(!isOpen);
-  };
-
-  const hideMenu = () => {
-    setIsOpen(false);
   };
 
   return (
@@ -56,12 +51,13 @@ export const Navigation = ({ activeItem, setActiveItem }) => {
           }}
         />
       </nav>
-      <Overlay hideMenu={hideMenu} />
     </>
   );
 };
 
 Navigation.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
   activeItem: PropTypes.number.isRequired,
   setActiveItem: PropTypes.func.isRequired,
 };

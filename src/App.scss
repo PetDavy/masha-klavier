@@ -33,7 +33,7 @@ p {
     width: 100%;
     height: 100vh;
 
-    transform: translateX(100vw);
+    transform: translateX(100%);
     transition: transform 0.8s;
     overflow-y: auto;
   }
@@ -61,6 +61,10 @@ p {
   overflow:hidden;
   z-index: 3;
   cursor: pointer;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
   
   & i {
     position: relative;
@@ -72,5 +76,24 @@ p {
   & span {
     position: relative;
     z-index: 2;
+  }
+
+  &--acting {
+    &::before {
+      position: absolute;
+      top:0;
+      left:-20%;
+      content: '';
+      transform: skewX(-40deg);
+      width: 0%;
+      height: 100%;
+
+      z-index: 1;
+      transition: width 0.5s;
+    }
+
+    &:hover::before {
+      width: 130%;
+    }
   }
 }

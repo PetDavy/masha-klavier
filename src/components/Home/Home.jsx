@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { TypingText } from './TypingText';
 import './Home.scss';
 
-export const Home = ({ isActive }) => {
+export const Home = ({ isActive, hideMenu }) => {
   const [isShown, setIsShown] = useState(false);
 
   useEffect(() => {
@@ -19,6 +19,9 @@ export const Home = ({ isActive }) => {
     <section
       className={classNames('Home', { active: isShown })}
       style={{ zIndex: isActive ? '2' : '1' }}
+      onClick={hideMenu}
+      role="button"
+      aria-hidden="true"
     >
       <div className="Home__text">
         <h3 className="Home__text--small">hi there !</h3>
@@ -35,14 +38,14 @@ export const Home = ({ isActive }) => {
         <div className="Home__buttons">
           <button
             type="button"
-            className="btn Home__btn-about"
+            className="btn btn--acting Home__btn-about"
           >
             <i className="fas fa-user" />
             <span>more about me</span>
           </button>
           <button
             type="button"
-            className="btn Home__btn-portfolio"
+            className="btn btn--acting Home__btn-portfolio"
           >
             <i className="fas fa-suitcase" />
             <span>portfolio</span>
@@ -55,4 +58,5 @@ export const Home = ({ isActive }) => {
 
 Home.propTypes = {
   isActive: PropTypes.bool.isRequired,
+  hideMenu: PropTypes.func.isRequired,
 };

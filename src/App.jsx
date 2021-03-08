@@ -6,15 +6,28 @@ import './App.scss';
 
 export const App = () => {
   const [activeItem, setActiveItem] = useState(0);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  const hideMenu = () => {
+    setIsOpenMenu(false);
+  };
 
   return (
     <div className="App">
       <Navigation
+        isOpen={isOpenMenu}
+        setIsOpen={setIsOpenMenu}
         activeItem={activeItem}
         setActiveItem={setActiveItem}
       />
-      <Home isActive={activeItem === 0} />
-      <About isActive={activeItem === 1} />
+      <Home
+        isActive={activeItem === 0}
+        hideMenu={hideMenu}
+      />
+      <About
+        isActive={activeItem === 1}
+        hideMenu={hideMenu}
+      />
     </div>
   );
 };

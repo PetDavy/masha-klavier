@@ -1,0 +1,44 @@
+{
+  "about": {
+    "general-info": [
+      {
+        "experience": [
+          {
+            "name": "piano master",
+            "date": "2017 - 2019",
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
+          },
+          {
+            "name": "piano teacher",
+            "date": "2017 - 2019",
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
+          },
+          {
+            "name": "piano concertmaister",
+            "date": "2017 - 2019",
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
+          }
+        ]
+      },
+      {
+        "education": [
+          {
+            "name": "Music schoole",
+            "date": "2017 - 2019",
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
+          },
+          {
+            "name": "Music Academy",
+            "date": "2017 - 2019",
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
+          },
+          {
+            "name": "Music Academy Austria",
+            "date": "2017 - 2019",
+            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
+          }
+        ]
+      }
+    ]
+  }
+}
