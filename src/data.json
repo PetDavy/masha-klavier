@@ -40,5 +40,31 @@
         ]
       }
     ]
-  }
+  },
+  "videos": [
+    {
+      "name": "Beethoven - Piano Trio No. 5",
+      "url": "m-sRD4PF4Os"
+    },
+    {
+      "name": "Rachmaninoff: Piano Concerto no.2",
+      "url": "rEGOihjqO9w"
+    },
+    {
+      "name": "Frédéric Chopin: Piano Concerto No. 1",
+      "url": "9WRIBgYAXDQ"
+    },
+    {
+      "name": "Liszt's Hungarian Rhapsody No. 2",
+      "url": "LdH1hSWGFGU"
+    },
+    {
+      "name": "Shostakovich Piano Concerto no.2",
+      "url": "zInQ6IjOwEg"
+    },
+    {
+      "name": "SCHUMANN Sonata for Violin No. 1",
+      "url": "vWNF2t6rXhk"
+    }
+  ]
 }

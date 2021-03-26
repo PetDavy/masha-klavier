@@ -1,7 +1,8 @@
-$primary-color: orange;
+@import '../../assets/vars.scss';
+@import '../../assets/mixins.scss';
 
 .About {
-	background:  #262626;
+	background: $primaary-background;
 	color:#fff;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -9,43 +10,15 @@ $primary-color: orange;
   padding-top: 60px;
 
   &__title {
-    margin-bottom: 60px;
-    text-align: center;
-    text-transform: uppercase;
-
-    &--colored {
-      color: $primary-color;
-    }
+    @include title;
   }
 
   &__main-title {
-    margin-bottom: 20px;
-    font-size: 3.2rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    letter-spacing: -1.5px;
+    @include main-title;
   }
 
   &__sub-title {
-    font-size: 0.9rem;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    color:#ccc;
-
-    &::before,
-    &::after {
-      content:'⸺';
-      color:$primary-color;
-      font-weight: 700;
-    }
-
-    &::before {
-      margin-right: 15px;
-    }
-
-    &::after {
-      margin-left: 15px;
-    }
+    @include sub-title;
   }
 
   &__info {
@@ -59,8 +32,14 @@ $primary-color: orange;
   }
 
   &__picture-wrapper {
+    position: relative;
     width: 425px;
     height: 425px;
+
+    @media (max-width: 550px) {
+      width: 100%;
+      height: auto;
+    }
   }
 
   &__picture {
@@ -70,6 +49,11 @@ $primary-color: orange;
     object-fit: cover;
     object-position: left;
     z-index: 2;
+
+    @media (max-width: 550px) {
+      width: 100%;
+      height: 90vw;
+    }
   }
 
   &__picture-frame {
@@ -80,16 +64,30 @@ $primary-color: orange;
     height: 440px;
     border: 7px solid $primary-color;
     z-index: 1;
+
+    @media (max-width: 550px) {
+      width: calc(100% - 30px);
+      height: 100%;
+    }
   }
 
   &__text {
     min-width: 500px;
+
+    @media (max-width: 550px) {
+      min-width: 100%;
+    }
   }
 
   &__columns {
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
+
+    @media (max-width: 550px) {
+      flex-direction: column;
+      margin-bottom: 40px;
+    }
   }
 
   &__column {
@@ -100,11 +98,20 @@ $primary-color: orange;
     & li {
       padding: 15px 0;
       color:#ccc;
+
+      @media (max-width: 550px) {
+        padding: 10px 0;
+      }
     }
 
     & span {
       color: #fff;
       margin-left: 20px;
+    }
+
+    @media (max-width: 550px) {
+      text-align: center;
+      font-size: 1.5rem;
     }
   }
 
@@ -136,6 +143,14 @@ $primary-color: orange;
     gap: 15px;
     justify-content: space-between;
     font-family: 'Open Sans', sans-serif;
+
+    @media (max-width: 550px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__data {
+    margin-bottom: 40px;
   }
 
   &__data-title {

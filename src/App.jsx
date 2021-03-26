@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Home } from './components/Home';
 import { About } from './components/About';
 import { Navigation } from './components/Navigation';
+import { Portfolio } from './components/Portfolio';
 import './App.scss';
 
 export const App = () => {
@@ -26,6 +27,10 @@ export const App = () => {
       />
       <About
         isActive={activeItem === 1}
+        hideMenu={hideMenu}
+      />
+      <Portfolio
+        isActive={activeItem === 2}
         hideMenu={hideMenu}
       />
     </div>

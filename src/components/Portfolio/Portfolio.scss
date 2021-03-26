@@ -1,0 +1,71 @@
+@import '../../assets/vars.scss';
+@import '../../assets/mixins.scss';
+
+.Portfolio {
+	background: $primaary-background;
+	color:#fff;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+  padding-top: 60px;
+
+  &__title {
+    @include title;
+  }
+
+  &__main-title {
+    @include main-title;
+  }
+
+  &__sub-title {
+    @include sub-title;
+  }
+
+  &__videos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 90%;
+    width: 1100px;
+    margin: 0 auto 40px;
+    grid-gap: 30px;
+  }
+  
+  &__video {
+    position: relative;
+    height: 190px;
+    border-radius: 5px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden; 
+    cursor: pointer;
+
+    &:hover .Portfolio__video-name {
+      opacity: 1;
+    }
+  }
+
+  &__video-name {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background: $primary-color;
+    color:#fff;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .video-frame:hover .video-name {
+    opacity: 1;
+  }
+}
