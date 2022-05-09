@@ -2,40 +2,31 @@
   "about": {
     "general-info": [
       {
-        "experience": [
-          {
-            "name": "piano master",
-            "date": "2017 - 2019",
-            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
-          },
-          {
-            "name": "piano teacher",
-            "date": "2017 - 2019",
-            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
-          },
-          {
-            "name": "piano concertmaister",
-            "date": "2017 - 2019",
-            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
-          }
-        ]
-      },
-      {
         "education": [
           {
-            "name": "Music schoole",
-            "date": "2017 - 2019",
-            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
+            "name": "Anton Bruckner Privatuniversity",
+            "location": "Linz, Austria",
+            "date": "2015 - 2021"
           },
           {
-            "name": "Music Academy",
-            "date": "2017 - 2019",
-            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
+            "name": "I.Franko National University",
+            "location": "Lviv, Ukraine",
+            "date": "2014 - 2015"
           },
           {
-            "name": "Music Academy Austria",
-            "date": "2017 - 2019",
-            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore reprehenderit unde laboriosam consequuntur odit quidem quod. Illum."
+            "name": "M.Lysenko National Musikhochschule",
+            "location": "Lviv, Ukraine",
+            "date": "2009 - 2014"
+          },
+          {
+            "name": "D.Sichinsky Music College",
+            "location": "Ivano-Frankivsk, Ukrain",
+            "date": "2005 - 2009"
+          },
+          {
+            "name": "Music School",
+            "location": "Ukrain",
+            "date": "1996 - 2005"
           }
         ]
       }
@@ -43,28 +34,100 @@
   },
   "videos": [
     {
-      "name": "Beethoven - Piano Trio No. 5",
-      "url": "m-sRD4PF4Os"
+      "name": "R.Shchedrin \"Basso ostinato\"",
+      "soundCloudUrl": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/872072497&color=%23808c98&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+      "videoExternalImg": "basso-bg-img.jpg",
+      "videoImg": "https://i1.sndcdn.com/artworks-VGcLhQC3R5Q0IOPE-OIOdbg-t500x500.jpg",
+      "videoImgAlign": "center",
+      "participants": ["Mariia Pankiv - Piano"],
+      "location": "Austria Tonstudio Weinberg"
     },
     {
-      "name": "Rachmaninoff: Piano Concerto no.2",
-      "url": "rEGOihjqO9w"
+      "name": "D.Schnyder Sonatine exotique movement I",
+      "url": "hRT3aui3q10",
+      "videoExternalImg": "exotique-bg-img.jpg",
+      "videoImgAlign": "bottom",
+      "participants": ["Adam Taubitz - Violin", "Mariia Pankiv - Piano"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio",
+      "slug": "D.Schnyder Sonatine exotique"
     },
     {
-      "name": "Frédéric Chopin: Piano Concerto No. 1",
-      "url": "9WRIBgYAXDQ"
+      "name": "D.Schnyder Sonatine exotique movement II",
+      "url": "hf6-jTxwM20",
+      "participants": ["Adam Taubitz - Violin", "Mariia Pankiv - Piano"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio",
+      "slug": "D.Schnyder Sonatine exotique"
     },
     {
-      "name": "Liszt's Hungarian Rhapsody No. 2",
-      "url": "LdH1hSWGFGU"
+      "name": "D.Schnyder Sonatine exotique movement III",
+      "url": "bD58r6m3OKo",
+      "participants": ["Adam Taubitz - Violin", "Mariia Pankiv - Piano"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio",
+      "slug": "D.Schnyder Sonatine exotique"
     },
     {
-      "name": "Shostakovich Piano Concerto no.2",
-      "url": "zInQ6IjOwEg"
+      "name": "A.Schnittke violin sonata No.1 movement I",
+      "soundCloudUrl": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/872057587&color=%23808c98&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+      "videoImg": "https://i1.sndcdn.com/artworks-PtizKs7WoWwRy1ZO-dCTI9w-t500x500.jpg",
+      "videoImgAlign": "top",
+      "participants": ["Tomas Novak - Violin", "Mariia Pankiv - Piano"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio",
+      "slug": "A.Schnittke violin sonata"
     },
     {
-      "name": "SCHUMANN Sonata for Violin No. 1",
-      "url": "vWNF2t6rXhk"
+      "name": "A.Schnittke violin sonata No.1 movement II-III",
+      "soundCloudUrl": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/872063731&color=%23808c98&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+      "videoImg": "https://i1.sndcdn.com/artworks-PtizKs7WoWwRy1ZO-dCTI9w-t500x500.jpg",
+      "videoImgAlign": "top",
+      "participants": ["Tomas Novak - Violin", "Mariia Pankiv - Piano"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio",
+      "slug": "A.Schnittke violin sonata"
+    },
+    {
+      "name": "A.Schnittke violin sonata No.1 movement IV",
+      "soundCloudUrl": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/872066926&color=%23808c98&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+      "videoImg": "https://i1.sndcdn.com/artworks-PtizKs7WoWwRy1ZO-dCTI9w-t500x500.jpg",
+      "videoImgAlign": "top",
+      "participants": ["Tomas Novak - Violin", "Mariia Pankiv - Piano"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio",
+      "slug": "A.Schnittke violin sonata"
+    },
+    {
+      "name": "D.Schnyder Sonata for Flute and Piano movement I",
+      "url": "pPpE4X08tBM",
+      "videoExternalImg": "flute-bg-img.jpg",
+      "videoImgAlign": "top",
+      "participants": ["Mariia Pankiv - Piano", "Daniel Schnyder - Flute"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio",
+      "slug": "D.Schnyder Sonata for Flute and Piano"
+    },
+    {
+      "name": "D.Schnyder Sonata for Flute and Piano movement II",
+      "url": "Njt1ttyv2GM",
+      "participants": ["Mariia Pankiv - Piano", "Daniel Schnyder - Flute"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio",
+      "slug": "D.Schnyder Sonata for Flute and Piano"
+    },
+    {
+      "name": "D.Schnyder Sonata for Flute and Piano movement III",
+      "url": "UnYUfR3ARX4",
+      "participants": ["Mariia Pankiv - Piano", "Daniel Schnyder - Flute"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio",
+      "slug": "D.Schnyder Sonata for Flute and Piano"
+    },
+    {
+      "name": "D.Schnyder Portrait of Charlie Parker",
+      "url": "nAm-grUR7jk",
+      "videoImg": "https://www.theapolis.de/files/api/public/image/mediaImage/80640/none/1",
+      "participants": ["Mariia Pankiv - Piano", "Daniel Schnyder - Flute"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio"
+    },
+    {
+      "name": "D.Schnyder \"Mensch Blue\"",
+      "soundCloudUrl": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/937744213&color=%23808c98&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
+      "videoImg": "https://www.theapolis.de/files/api/public/image/mediaImage/77417/none/1",
+      "participants": ["Mariia Pankiv - Piano", "Daniel Schnyder - Flute"],
+      "location": "Switzerland SRF Zurich Brunnenhof Studio"
     }
   ]
 }

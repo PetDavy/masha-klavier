@@ -1,0 +1,66 @@
+@import '../../assets/vars.scss';
+
+.LoginForm {
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__label {
+    position: relative;
+    margin-bottom: 25px;
+    width: 100%;
+
+    &--half {
+      width: 46%;
+
+      @media (max-width: 1100px) {
+        width: 100%;
+      }
+    }
+
+    & i {
+      position: absolute;
+      top: 14px;
+      left: 20px;
+      color: #8c8c8c;
+    }
+  }
+
+  &__input,
+  &__textarea {
+    display: block;
+    width: 100%;
+    padding: 14px 0 14px 45px;
+    background: #404040;
+    border: 1px solid #595959;
+    border-radius: 50px;
+    color: #8c8c8c;
+    font-size: 0.9rem;
+    outline: none;
+
+    &::placeholder {
+      text-transform: uppercase;
+    }
+  }
+
+  &__textarea {
+    height: 140px;
+    resize: vertical;
+    border-radius: 30px;
+    font-size: 1.3rem;
+  }
+
+  &__btn {
+    position: relative;
+    margin-bottom: 25px;
+    background: $primary-color;
+    color: #fff;
+    border: none;
+
+    &::before {
+      background:#4d4d4d; 
+    }
+  }
+}

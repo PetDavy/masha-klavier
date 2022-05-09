@@ -42,3 +42,17 @@
     margin-left: 15px;
   }
 }
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #4d4d4d; 
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #1a1a1a; 
+  }
+}

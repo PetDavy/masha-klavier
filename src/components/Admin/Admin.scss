@@ -1,0 +1,35 @@
+@import '../../assets/vars.scss';
+@import '../../assets/mixins.scss';
+
+.Admin {
+  background: $primaary-background;
+  color:#fff;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 60px;
+
+  &__title {
+    @include title;
+  }
+
+  &__main-title {
+    @include main-title;
+  }
+
+  &__sub-title {
+    @include sub-title;
+  }
+
+  &__content {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+
+    @media (max-width: 650px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}

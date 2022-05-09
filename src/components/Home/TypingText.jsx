@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const words = ['Pianist', 'Сoncertmaster', 'Musician'];
+const words = ['Pianist', 'Accompanist', 'Musician'];
 const initTypeSpeed = 250;
 
 export const TypingText = () => {

@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 export const MenuItem = (props) => {
-  const { block, isOpen, isActive, delay, clickHandler, setIsOpen, id } = props;
+  const {
+    block,
+    isOpen,
+    isActive,
+    delay,
+    setIsOpen,
+    // setActivePath,
+    id,
+  } = props;
   const [name, iconClass] = block;
+  const history = useHistory();
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -15,8 +25,10 @@ export const MenuItem = (props) => {
   }, [isOpen]);
 
   const triggerLink = () => {
-    clickHandler(id);
+    const newPath = id === 'home' ? '' : id;
+
     setIsOpen(false);
+    history.push(`/${newPath}`);
   };
 
   return (
@@ -53,7 +65,7 @@ MenuItem.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   isActive: PropTypes.bool.isRequired,
   delay: PropTypes.number.isRequired,
-  clickHandler: PropTypes.func.isRequired,
   setIsOpen: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+  // setActivePath: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };

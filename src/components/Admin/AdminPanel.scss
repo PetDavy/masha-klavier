@@ -1,0 +1,147 @@
+@import '../../assets/vars.scss';
+
+.AdminPanel {
+  padding: 40px 10px 0;
+  width: 100%;
+  max-width: 1400px;
+
+  &__videos {
+    display: flex;
+  }
+
+  &__videos-list {
+    position: relative;
+    flex: 2 0;
+    margin-right: 40px;
+  }
+
+  &__video {
+    position: relative;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 1px solid #666;
+    background-color: #4d4d4d;
+    transition: transform 0.4s ease-out;
+    cursor: pointer;
+
+    &--active {
+      background-color: #85adad;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+
+      &:not(.AdminPanel__multi-video--open) > .AdminPanel__video-moves {
+        display: flex;
+      }
+    }
+  }
+
+  &__video-name {
+    &--active {
+      color: #00b33c;
+    }
+  }
+
+  &__video-moves {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    width: 40px;
+  }
+
+  &__video-move-btn {
+    transition: transform 0.3s ease-out;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+
+  &__delete-icon {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__multi-video {
+    position: relative;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 1px solid #666;
+    background-color: #4d4d4d;
+    cursor: pointer;
+
+    &--open {
+      padding-right: 40px;
+      background-color: transparent;
+
+      .AdminPanel__video-name-slug {
+        margin-bottom: 20px;
+      }
+    }
+  
+    .AdminPanel__video {
+      display: none;
+      margin-left: 40px;
+    }
+  }
+
+  &__video-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  &__video-label-plus,
+  &__video-label-minus {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 18px;
+  }
+
+  &__video-label-minus {
+    display: none;
+  }
+
+  &__util-checkbox {
+    position: absolute;
+    z-index: -1;
+    visibility: hidden;
+
+    &:checked ~ .AdminPanel__video {
+      display: block;
+    }
+  
+    &:checked + .AdminPanel__video-name {
+      padding-bottom: 10px;
+    }
+
+    &:checked ~ .AdminPanel__video-label .AdminPanel__video-label-plus {
+      display: none;
+    }
+  
+    &:checked ~ .AdminPanel__video-label .AdminPanel__video-label-minus {
+      display: block;
+    }
+  }
+
+  &__videos-display {
+    flex: 1 0;
+  }
+}

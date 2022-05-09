@@ -1,0 +1,143 @@
+@import '../../assets/vars.scss';
+@import '../../assets/mixins.scss';
+
+.VideoPlayer {
+  position: absolute;
+  background: #fff;
+  top: 0; 
+  left: 100%; 
+  bottom: 0;
+  width: 48%;
+  padding: 30px;
+  background-color: $primaary-background;
+  transition: transform $primary-transition;
+  overflow-y: auto;
+  z-index: 2;
+
+  @include custom-scrollbar;
+
+  @media (max-width: 950px) {
+    width: 100%;
+  }
+
+  &--shown {
+    transform: translateX(-100%);
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    margin-bottom: 20px;
+    padding-bottom: 56.25%;
+  }
+
+  &__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__info {
+    margin-bottom: 15px;
+    padding: 0 15px;
+  }
+
+  &__sub-video-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
+  }
+
+  &__title {
+    margin-right: 30px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: $primary-color;
+
+    @media (max-width: 700px) {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__btn {
+    flex-shrink: 0;
+    position: relative;
+    background: $primaary-background;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+
+    &::before {
+      background:$primary-color;
+    }
+
+    &:hover {
+      color:#fff;
+    }
+  }
+
+  &__btn-previw {
+    background: $primary-color;
+    color: #fff;
+    border: none;
+
+    &::before {
+      background:#4d4d4d; 
+    }
+  }
+
+  &__list {
+    list-style: none;
+    color: #fff;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    font-size: 1rem;
+  }
+
+  &__list-name {
+    margin: 0 10px;
+    text-transform: uppercase;
+  }
+
+  &__video-list {
+    list-style: none;
+  }
+
+  &__video-list-item {
+    display: flex;
+    align-items: center;
+    height: 110px;
+    padding: 15px 0 15px 15px;
+    font-size: 1.1rem;
+    color: $primary-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #333333;
+    }
+
+    &--active {
+      color: #2aa22a;
+      background-color: #404040;
+    }
+  }
+
+  &__video-list-img {
+    height: 100%;
+    width: 150px;
+    background-size: cover;
+    margin-right: 20px;
+  }
+}
