@@ -1,8 +1,100 @@
-.nav {
-  display: flex;
-  margin: 20px;
+@import './assets/vars.scss';
 
-  * {
-    margin-right: 10px;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Manrope', sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  & section {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    transform: translateX(100%);
+    transition: transform 0.8s;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  & .active {
+    transform: translateX(0);
+    z-index: 2;
+  }
+}
+
+.btn {
+  position: relative;
+	display: inline-block;
+  padding:13px 30px;
+  
+	font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+  border-radius: 50px;
+	text-decoration: none;
+  
+  overflow:hidden;
+  z-index: 3;
+  cursor: pointer;
+  outline: none;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+  
+  & i {
+    position: relative;
+    font-size: 0.8rem;
+    margin-right: 8px;
+    z-index: 2;
+  }
+
+  & span {
+    position: relative;
+    z-index: 2;
+  }
+
+  &--acting {
+    &::before {
+      position: absolute;
+      top:0;
+      left:-20%;
+      content: '';
+      transform: skewX(-40deg);
+      width: 0%;
+      height: 100%;
+
+      z-index: 1;
+      transition: width 0.5s;
+    }
+
+    &:hover::before {
+      width: 130%;
+    }
   }
 }

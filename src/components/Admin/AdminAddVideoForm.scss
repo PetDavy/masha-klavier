@@ -1,0 +1,121 @@
+@import '../../assets/vars.scss';
+
+.AdminAddVideoForm {
+
+  &__buttons {
+    position: absolute;
+    top: -45px;
+    left: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  &__open-btn,
+  &__save-btn {
+    height: 35px;
+    min-width: 120px;
+    margin-right: 20px;
+    padding: 0 20px;
+    background-color: transparent;
+    border: 1px solid $primary-color;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 15px;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+
+  &__save-btn {
+    background-color: #339933;
+    border: none;
+
+    &:hover {
+      background-color: lighten(#339933, 10%);
+    }
+  }
+
+  &__form {
+    margin-bottom: 40px;
+    display: flex;
+  }
+
+  &__inputs {
+    flex: 1 0;
+  }
+
+  &__photo-frame {
+    position: relative;
+    min-width: 30%;
+    margin-right: 20px;
+    height: 160px;
+    background-color: #595959;
+    border-radius: 3px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__input-container {
+    position: relative;
+  }
+
+  &__input,
+  &__textarea {
+    display: block;
+    width: 100%;
+    padding: 14px 25px;
+    background: #404040;
+    border: 1px solid #595959;
+    border-radius: 50px;
+    color: #8c8c8c;
+    font-size: 0.9rem;
+    outline: none;
+    margin-bottom: 15px;
+
+    &::placeholder {
+      text-transform: uppercase;
+    }
+
+    &--file {
+      padding-right: 136px;
+    }
+  }
+
+  &__textarea {
+    height: 140px;
+    resize: vertical;
+    border-radius: 30px;
+    font-size: 1.3rem;
+  }
+
+  &__input-file-label {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    padding: 8px 15px;
+    transform: translateY(-50%);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 80px;
+    border: none;
+    background-color: #666;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  &__input-file {
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
+    transform: scale(0);
+  }
+}

@@ -1,0 +1,58 @@
+@mixin title {
+  margin-bottom: 60px;
+  padding: 0 20px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &--colored {
+    color: $primary-color;
+  }
+}
+
+@mixin main-title {
+  margin-bottom: 20px;
+  font-size: 3.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+}
+
+@mixin sub-title {
+  font-size: 0.9rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color:#ccc;
+
+  &::before,
+  &::after {
+    content:'⸺';
+    color:$primary-color;
+    font-weight: 700;
+
+    @media (max-width: 720px) {
+      display: none;
+    }
+  }
+
+  &::before {
+    margin-right: 15px;
+  }
+
+  &::after {
+    margin-left: 15px;
+  }
+}
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #4d4d4d; 
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #1a1a1a; 
+  }
+}
