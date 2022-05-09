@@ -83,15 +83,19 @@ export const AdminDisplay = ({ videos, video, db, storage, videoPreviews }) => {
   };
 
   const handleSlugChange = ({ target }) => {
-    setSlug(target.value);
+    const { value } = target;
 
-    if (target.value !== video.slug) {
-      updateData.listOrder = getListOrder(videos, target.value);
+    setSlug(value);
+
+    if (value && value !== video.slug) {
+      updateData.listOrder = getListOrder(videos, value);
+    } else if (!value) {
+      updateData.listOrder = 1;
     }
 
     setUpdateData({
       ...updateData,
-      slug: target.value,
+      slug: value,
     });
   };
 

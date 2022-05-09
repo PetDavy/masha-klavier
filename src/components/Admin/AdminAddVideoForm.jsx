@@ -194,7 +194,6 @@ export const AdminAddVideoForm = ({ db, storage, videos, videoPreviews }) => {
             style={{
               backgroundImage: imageUrl
                 ? `url(${imageUrl})`
-                // eslint-disable-next-line max-len
                 : `url('http://img.youtube.com/vi/${getYouTubeVideoCode(youtubeUrl)}/sddefault.jpg')`,
             }}
           />

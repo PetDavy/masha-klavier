@@ -1,5 +1,5 @@
 export function getListOrder(videos, slug) {
-  let listOrder = 0;
+  let listOrder = 1;
   const videosWithSameSlug = videos.filter(video => video.slug === slug);
 
   if (videosWithSameSlug.length) {

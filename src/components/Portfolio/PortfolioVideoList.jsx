@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -49,7 +50,7 @@ export const PortfolioVideoList = (props) => {
       <ul
         className="Portfolio__video-list"
       >
-        {videosList.sort((vA, vB) => vA.order - vB.order).map((video, i) => (
+        {videosList.sort((vA, vB) => vA.listOrder - vB.listOrder).map((video, i) => (
           <PortfolioVideoListItem
             key={video.name}
             video={video}
