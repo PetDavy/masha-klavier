@@ -2,6 +2,7 @@
 
 .LoginForm {
   &__form {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -62,5 +63,18 @@
     &::before {
       background:#4d4d4d; 
     }
+  }
+
+  &__error-message {
+    position: absolute;
+    top: -90px;
+    left: 0;
+    width: 100%;
+    padding: 20px 25px;
+    background: #ffcbcb;
+    color: #8c8c8c;
+    border-radius: 5px;
+    border: 2px solid #ffcbcc;
+    z-index: 2;
   }
 }

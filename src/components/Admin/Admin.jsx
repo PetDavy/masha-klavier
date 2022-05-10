@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { signOut } from 'firebase/auth';
 import { LoginForm } from './LoginForm';
 import { AdminPanel } from './AdminPanel';
 import './Admin.scss';
@@ -22,6 +23,16 @@ export const Admin = ({ isActive, hideMenu, isLogedIn, auth, db, storage, active
     setIsMount(true);
   }, []);
 
+  const userSignOut = () => {
+    signOut(auth).then(() => {
+      // eslint-disable-next-line no-console
+      console.log('user signed out');
+    }).catch((error) => {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    });
+  };
+
   return (
     <section
       className={classNames('Admin', { active: isShown })}
@@ -40,6 +51,16 @@ export const Admin = ({ isActive, hideMenu, isLogedIn, auth, db, storage, active
         <h3 className="Admin__sub-title">
           {isLogedIn ? ' Configure your site data' : 'Write your email and password'}
         </h3>
+        {isLogedIn && (
+          <button
+            className="Admin__logout-btn"
+            onClick={userSignOut}
+            type="button"
+            aria-label="Logout"
+          >
+            Logout
+          </button>
+        )}
       </div>
       {!isLogedIn && <LoginForm auth={auth} />}
       {isLogedIn && <AdminPanel videos={videos} db={db} storage={storage} videoPreviews={videoPreviews} />}

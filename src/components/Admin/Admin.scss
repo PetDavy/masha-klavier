@@ -32,4 +32,17 @@
       text-align: center;
     }
   }
+
+  &__logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border: none;
+    background: $primary-color;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }
