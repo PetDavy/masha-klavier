@@ -11,14 +11,6 @@
   background-position: left;
   background-size: cover;
   transition: opacity 1.5s ease-out;
-
-  &_bg-1 {
-    background-image: url('../../media/main-showcase.jpg');
-  }
-
-  &_bg-2 {
-    background-image: url('../../media/main-showcase-2.jpg');
-  }
   
   &__paragraph {
     max-width: 520px;

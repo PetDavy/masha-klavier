@@ -6,7 +6,6 @@ import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
 import {
   getFirestore,
   collection,
-  // getDocs,
   query,
   onSnapshot,
 } from 'firebase/firestore';
@@ -27,6 +26,7 @@ export const App = () => {
   const [db] = useState(getFirestore());
   const [storage] = useState(getStorage());
   const [videos, setVideos] = useState([]);
+  const [images, setImages] = useState([]);
   const [videoPreviews, setVideoPreviews] = useState([]);
 
   useEffect(() => {
@@ -62,6 +62,27 @@ export const App = () => {
     }
   };
 
+  const updateImages = async() => {
+    const imagesRef = ref(storage, '/images/');
+
+    try {
+      const res = await listAll(imagesRef);
+
+      const resList = res.items.map(itemRef => (
+        getDownloadURL(itemRef)
+          .then(url => ({
+            name: itemRef.name,
+            url,
+          }))
+      ));
+
+      Promise.all(resList)
+        .then(loadedImages => setImages(loadedImages));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const updateVideos = () => {
     const q = query(collection(db, 'videos'));
 
@@ -77,6 +98,7 @@ export const App = () => {
 
       setVideos(videoList);
       updatePreviews();
+      updateImages();
     });
   };
 
@@ -100,6 +122,7 @@ export const App = () => {
         <Home
           setActiveItem={setActiveItem}
           isActive={activePath === ''}
+          images={images}
           hideMenu={hideMenu}
         />
         <About
