@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './About.scss';
-import aboutPicture from '../../media/about-img.jpg';
 import data from '../../data.json';
 
-export const About = ({ isActive, hideMenu, activePath }) => {
+export const About = ({ isActive, hideMenu, activePath, images, resume }) => {
   const [isShown, setIsShown] = useState(false);
   const [isMount, setIsMount] = useState(false);
+  const [aboutImage, setAboutImage] = useState(null);
 
   useEffect(() => {
     if (isActive) {
@@ -16,6 +16,10 @@ export const About = ({ isActive, hideMenu, activePath }) => {
       setTimeout(() => setIsShown(false), 1000);
     }
   }, [isActive]);
+
+  useEffect(() => {
+    setAboutImage(images.find(image => image.name.startsWith('about')));
+  }, [images]);
 
   useEffect(() => {
     setIsMount(true);
@@ -38,93 +42,99 @@ export const About = ({ isActive, hideMenu, activePath }) => {
           I play the best music in the world, and I love what I do.
         </h3>
       </div>
-      <div className="About__info">
-        <div className="About__picture-wrapper">
-          <img
-            src={aboutPicture}
-            alt="Masha About"
-            className="About__picture"
-          />
-          <div className="About__picture-frame" />
-        </div>
-        <div className="About__text">
-          <div className="About__columns">
-            <ul className="About__column">
-              <li>
-                First Name
-                <span> Mariia</span>
-              </li>
-              <li>
-                Last Name
-                <span> Pankiv</span>
-              </li>
-              <li>
-                Birthdate
-                <span> 08 july 1990</span>
-              </li>
-              <li>
-                Nationality
-                <span> Ukrainian</span>
-              </li>
-              <li>
-                Experience
-                <span> 16 years</span>
-              </li>
-              <li>
-                Address
-                <span> Linz, Austria </span>
-              </li>
-            </ul>
-            <ul className="About__column">
-              <li>
-                Freelance
-                <span>Available</span>
-              </li>
-              <li>
-                Langages
-                <span> German, English, Ukrainian, Russian </span>
-              </li>
-              <li>
-                Phone
-                &nbsp;
-                <a
-                  className="About__link"
-                  href="tel:+4368184847049"
-                >
-                  +43 681 8484 7049
-                </a>
-              </li>
-              <li>
-                Email
-                &nbsp;
-                <a
-                  className="About__link"
-                  href="mailto:maschaklavier@gmail.com"
-                >
-                  maschaklavier@gmail.com
-                </a>
-              </li>
-              <li>
-                Theapolis
-                &nbsp;
-                <a
-                  className="About__link"
-                  // eslint-disable-next-line max-len
-                  href="https://www.theapolis.de/en/profile/show/mariia-pankiv-1?fbclid=IwAR0m8Q2GyZ0wGB1AF8svFskoPL68qwGlxh-_xwqkQhSjAH6f7oMr1Nmeu7A"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Mariia Pankiv
-                </a>
-              </li>
-            </ul>
+      {aboutImage && (
+        <div className="About__info">
+          <div className="About__picture-wrapper">
+            <img
+              src={aboutImage?.url}
+              alt="Masha About"
+              className="About__picture"
+            />
+            <div className="About__picture-frame" />
           </div>
-          <div className="btn btn--acting About__btn">
-            <i className="fas fa-download" />
-            <span>watch my cv</span>
+          <div className="About__text">
+            <div className="About__columns">
+              <ul className="About__column">
+                <li>
+                  First Name
+                  <span> Mariia</span>
+                </li>
+                <li>
+                  Last Name
+                  <span> Pankiv</span>
+                </li>
+                <li>
+                  Birthdate
+                  <span> 08 july 1990</span>
+                </li>
+                <li>
+                  Nationality
+                  <span> Ukrainian</span>
+                </li>
+                <li>
+                  Experience
+                  <span> 16 years</span>
+                </li>
+                <li>
+                  Address
+                  <span> Linz, Austria </span>
+                </li>
+              </ul>
+              <ul className="About__column">
+                <li>
+                  Freelance
+                  <span>Available</span>
+                </li>
+                <li>
+                  Langages
+                  <span> German, English, Ukrainian, Russian </span>
+                </li>
+                <li>
+                  Phone
+                  &nbsp;
+                  <a
+                    className="About__link"
+                    href="tel:+4368184847049"
+                  >
+                    +43 681 8484 7049
+                  </a>
+                </li>
+                <li>
+                  Email
+                  &nbsp;
+                  <a
+                    className="About__link"
+                    href="mailto:maschaklavier@gmail.com"
+                  >
+                    maschaklavier@gmail.com
+                  </a>
+                </li>
+                <li>
+                  Theapolis
+                  &nbsp;
+                  <a
+                    className="About__link"
+                    // eslint-disable-next-line max-len
+                    href="https://www.theapolis.de/en/profile/show/mariia-pankiv-1?fbclid=IwAR0m8Q2GyZ0wGB1AF8svFskoPL68qwGlxh-_xwqkQhSjAH6f7oMr1Nmeu7A"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Mariia Pankiv
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <a
+              href={resume ? resume.url : ''}
+              className="btn btn--acting About__btn"
+              download={resume ? resume.name : ''}
+            >
+              <i className="fas fa-download" />
+              <span>watch my cv</span>
+            </a>
           </div>
         </div>
-      </div>
+      )}
       <div className="About__separator" />
       <div className="About__general-info">
         {data.about['general-info'].map((infoData, index) => {
@@ -174,4 +184,12 @@ About.propTypes = {
   isActive: PropTypes.bool.isRequired,
   hideMenu: PropTypes.func.isRequired,
   activePath: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  })).isRequired,
+  resume: PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
 };

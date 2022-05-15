@@ -28,6 +28,7 @@ export const App = () => {
   const [videos, setVideos] = useState([]);
   const [images, setImages] = useState([]);
   const [videoPreviews, setVideoPreviews] = useState([]);
+  const [resume, setResume] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -83,6 +84,27 @@ export const App = () => {
     }
   };
 
+  const updateResume = async() => {
+    const resumeRef = ref(storage, '/resume/');
+
+    try {
+      const res = await listAll(resumeRef);
+
+      const resList = res.items.map(itemRef => (
+        getDownloadURL(itemRef)
+          .then(url => ({
+            name: itemRef.name,
+            url,
+          }))
+      ));
+
+      Promise.all(resList)
+        .then(loadedResume => setResume(loadedResume));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const updateVideos = () => {
     const q = query(collection(db, 'videos'));
 
@@ -99,6 +121,7 @@ export const App = () => {
       setVideos(videoList);
       updatePreviews();
       updateImages();
+      updateResume();
     });
   };
 
@@ -129,6 +152,8 @@ export const App = () => {
           isActive={activePath === 'about'}
           hideMenu={hideMenu}
           activePath={activePath}
+          images={images}
+          resume={resume?.[0]}
         />
         <Portfolio
           isActive={activePath === 'portfolio'}

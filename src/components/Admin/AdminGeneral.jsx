@@ -1,11 +1,19 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ref, uploadBytes, deleteObject } from 'firebase/storage';
 import PropTypes from 'prop-types';
 import './AdminGeneral.scss';
 
 export const AdminGeneral = ({ images, storage, updateImages }) => {
-  const setImageFile = async(target) => {
+  const [showcaseImages, setShowcaseImages] = useState([]);
+  const [aboutImage, setAboutImage] = useState(null);
+
+  useEffect(() => {
+    setShowcaseImages(images.filter(image => image.name.startsWith('showcase')));
+    setAboutImage(images.find(image => image.name.startsWith('about')));
+  }, [images]);
+
+  const setShowcaseImageFile = async(target) => {
     const imageBlobFile = target.files[0];
 
     if (!imageBlobFile || !imageBlobFile.type.startsWith('image')) {
@@ -17,8 +25,8 @@ export const AdminGeneral = ({ images, storage, updateImages }) => {
 
     let freeMaxId = 1;
 
-    if (images.length) {
-      const imageNamesIdes = images.map(image => parseInt(image.name.split('-')[1], 10));
+    if (showcaseImages.length) {
+      const imageNamesIdes = showcaseImages.map(image => parseInt(image.name.split('-')[1], 10));
       const filteredImageNamesIdes = imageNamesIdes.filter(id => id);
 
       if (filteredImageNamesIdes.length) {
@@ -27,6 +35,27 @@ export const AdminGeneral = ({ images, storage, updateImages }) => {
     }
 
     const storageRef = ref(storage, `/images/showcase-${freeMaxId}`);
+
+    try {
+      await uploadBytes(storageRef, imageBlobFile);
+      updateImages();
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log('Coudn/t upload image file');
+    }
+  };
+
+  const setAboutImageFile = async(target) => {
+    const imageBlobFile = target.files[0];
+
+    if (!imageBlobFile || !imageBlobFile.type.startsWith('image')) {
+      // eslint-disable-next-line no-alert
+      alert(`файл ${imageBlobFile.name} не є зображенням або файлом потрібного формату`);
+
+      return;
+    }
+
+    const storageRef = ref(storage, '/images/about-img.jpg');
 
     try {
       await uploadBytes(storageRef, imageBlobFile);
@@ -54,7 +83,7 @@ export const AdminGeneral = ({ images, storage, updateImages }) => {
       <div className="AdminGeneral__showcase-block AdminGeneral__content-block">
         <h2 className="AdminGeneral__block-title">Showcase Images</h2>
         <div className="AdminGeneral__showcase-list">
-          {images.map(image => (
+          {showcaseImages.map(image => (
             <div className="AdminGeneral__showcase-item" key={image.name}>
               <img
                 src={image.url}
@@ -73,14 +102,14 @@ export const AdminGeneral = ({ images, storage, updateImages }) => {
               </div>
             </div>
           ))}
-          {images.length < 4 && (
+          {showcaseImages.length < 4 && (
             <label htmlFor="showcase-image-file" className="AdminGeneral__showcase-item">
               <div className="AdminGeneral__showcase-add-btn">
                 <input
                   type="file"
                   id="showcase-image-file"
                   className="AdminGeneral__showcase-file-input"
-                  onChange={({ target }) => setImageFile(target)}
+                  onChange={({ target }) => setShowcaseImageFile(target)}
                 />
                 <span className="AdminGeneral__showcase-add-btn-text">new</span>
               </div>
@@ -89,9 +118,27 @@ export const AdminGeneral = ({ images, storage, updateImages }) => {
         </div>
       </div>
 
-      <div className="AdminGeneral__about-block">
-        <h2 className="AdminGeneral__block-title">About Image</h2>
-      </div>
+      {aboutImage && (
+        <div className="AdminGeneral__about-block AdminGeneral__content-block">
+          <h2 className="AdminGeneral__block-title">About Image</h2>
+          <div className="AdminGeneral__about-image-container">
+            <img
+              src={aboutImage?.url}
+              alt={aboutImage?.name}
+              className="AdminGeneral__about-image"
+            />
+            <label htmlFor="about-image-file" className="AdminGeneral__about-change-btn">
+              <input
+                type="file"
+                id="about-image-file"
+                className="AdminGeneral__about-file-input"
+                onChange={({ target }) => setAboutImageFile(target)}
+              />
+              <span className="AdminGeneral__about-add-btn-text">change</span>
+            </label>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

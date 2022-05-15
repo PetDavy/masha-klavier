@@ -62,7 +62,37 @@
     }
   }
 
-  &__showcase-file-input {
+  &__showcase-file-input,
+  &__about-file-input {
     display: none;
+  }
+
+  &__about-image-container {
+    display: flex;
+    max-width: 300px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    flex-direction: column;
+  }
+
+  &__about-image {
+    object-fit: cover;
+    object-position: center;
+    width: 200px;
+    height: auto;
+  }
+
+  &__about-change-btn {
+    margin-top: 10px;
+    text-align: center;
+    width: 200px;
+    color: #000;
+    background-color: #f6be55;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
   }
 }
