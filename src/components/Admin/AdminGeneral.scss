@@ -1,0 +1,68 @@
+.AdminGeneral {
+  &__content-block {
+    margin-bottom: 20px;
+  }
+
+  &__block-title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #ccc;
+  }
+
+  &__showcase-list {
+    display: flex;
+  }
+
+  &__showcase-item {
+    display: flex;
+    max-width: 300px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    flex-direction: column;
+  }
+
+  &__showcase-image {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 180px;
+  }
+
+  &__showcase-del-btn {
+    margin-top: 10px;
+    text-align: center;
+    color: #fff;
+    background-color: #f66055;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &__showcase-add-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 180px;
+    background-color: rgba(250, 250, 250, 0.1);
+    border: 2px solid rgba(250, 250, 250, 0.2);
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #666;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: font-size 0.2s ease-in-out;
+
+    &:hover {
+      font-size: 22px;
+    }
+  }
+
+  &__showcase-file-input {
+    display: none;
+  }
+}

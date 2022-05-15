@@ -150,7 +150,9 @@ export const App = () => {
           isLogedIn={isLogedIn}
           activePath={activePath}
           videos={videos}
+          images={images}
           videoPreviews={videoPreviews}
+          updateImages={updateImages}
         />
       </Route>
     </div>

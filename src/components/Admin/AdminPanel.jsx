@@ -10,9 +10,10 @@ import { AdminDisplay } from './AdminDisplay';
 import { AdminAddVideoForm } from './AdminAddVideoForm';
 import { ConfirmModal } from './ConfirmModal';
 import { getTopOrder, getTopListOrder } from '../../utils/orderUtils';
+import { AdminGeneral } from './AdminGeneral';
 import './AdminPanel.scss';
 
-export const AdminPanel = ({ videos, db, storage, videoPreviews }) => {
+export const AdminPanel = ({ videos, db, storage, videoPreviews, images, updateImages }) => {
   const [activeVideo, setActiveVideo] = useState(null);
   const [deletVideo, setDeletVideo] = useState(null);
   const [videoList, setVideoList] = useState([]);
@@ -314,9 +315,7 @@ export const AdminPanel = ({ videos, db, storage, videoPreviews }) => {
         </div>
       )}
       {activeTab === 'general' && (
-        <div className="AdminPanel__general">
-          General
-        </div>
+        <AdminGeneral images={images} storage={storage} updateImages={updateImages} />
       )}
     </div>
   );
@@ -342,4 +341,9 @@ AdminPanel.propTypes = {
     name: PropTypes.string,
     url: PropTypes.string,
   })).isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  })).isRequired,
+  updateImages: PropTypes.func.isRequired,
 };

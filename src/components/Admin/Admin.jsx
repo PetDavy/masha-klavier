@@ -7,7 +7,7 @@ import { LoginForm } from './LoginForm';
 import { AdminPanel } from './AdminPanel';
 import './Admin.scss';
 
-export const Admin = ({ isActive, hideMenu, isLogedIn, auth, db, storage, activePath, videos, videoPreviews }) => {
+export const Admin = ({ isActive, hideMenu, isLogedIn, auth, db, storage, activePath, videos, images, videoPreviews, updateImages }) => {
   const [isShown, setIsShown] = useState(false);
   const [isMount, setIsMount] = useState(false);
 
@@ -63,7 +63,7 @@ export const Admin = ({ isActive, hideMenu, isLogedIn, auth, db, storage, active
         )}
       </div>
       {!isLogedIn && <LoginForm auth={auth} />}
-      {isLogedIn && <AdminPanel videos={videos} db={db} storage={storage} videoPreviews={videoPreviews} />}
+      {isLogedIn && <AdminPanel videos={videos} db={db} storage={storage} videoPreviews={videoPreviews} images={images} updateImages={updateImages} />}
     </section>
   );
 };
@@ -94,4 +94,9 @@ Admin.propTypes = {
     name: PropTypes.string,
     url: PropTypes.string,
   })).isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  })).isRequired,
+  updateImages: PropTypes.func.isRequired,
 };
