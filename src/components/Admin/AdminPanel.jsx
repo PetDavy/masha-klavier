@@ -10,12 +10,14 @@ import { AdminDisplay } from './AdminDisplay';
 import { AdminAddVideoForm } from './AdminAddVideoForm';
 import { ConfirmModal } from './ConfirmModal';
 import { getTopOrder, getTopListOrder } from '../../utils/orderUtils';
+import { AdminGeneral } from './AdminGeneral';
 import './AdminPanel.scss';
 
-export const AdminPanel = ({ videos, db, storage, videoPreviews }) => {
+export const AdminPanel = ({ videos, db, storage, videoPreviews, images, updateImages, resume }) => {
   const [activeVideo, setActiveVideo] = useState(null);
   const [deletVideo, setDeletVideo] = useState(null);
   const [videoList, setVideoList] = useState([]);
+  const [activeTab, setActiveTab] = useState('videos');
   const slugs = {};
 
   useEffect(() => {
@@ -265,27 +267,56 @@ export const AdminPanel = ({ videos, db, storage, videoPreviews }) => {
           setDeletVideo={setDeletVideo}
         />
       )}
-      <div className="AdminPanel__videos">
-        <div className="AdminPanel__videos-list">
-          <AdminAddVideoForm db={db} storage={storage} videos={videoList} videoPreviews={videoPreviews} />
-          {videoList.map((video) => {
-            if (!video.slug) {
-              return singleVideo(video);
-            }
-
-            if (video.slug && !slugs[video.slug]) {
-              return multipleVideo(video);
-            }
-
-            return null;
+      <div className="AdminPanel__tabs">
+        <div
+          className={classNames('AdminPanel__tab', {
+            'AdminPanel__tab--active': activeTab === 'videos',
           })}
+          onClick={() => setActiveTab('videos')}
+          onKeyDown={() => setActiveTab('videos')}
+          role="button"
+          tabIndex="0"
+        >
+          Videos
         </div>
-        <div className="AdminPanel__videos-display">
-          {activeVideo && (
-            <AdminDisplay videos={videoList} video={activeVideo} db={db} storage={storage} videoPreviews={videoPreviews} />
-          )}
+        <div
+          className={classNames('AdminPanel__tab', {
+            'AdminPanel__tab--active': activeTab === 'general',
+          })}
+          onClick={() => setActiveTab('general')}
+          onKeyDown={() => setActiveTab('general')}
+          role="button"
+          tabIndex="0"
+        >
+          General
         </div>
       </div>
+      {activeTab === 'videos' && (
+        <div className="AdminPanel__videos">
+          <div className="AdminPanel__videos-list">
+            <AdminAddVideoForm db={db} storage={storage} videos={videoList} videoPreviews={videoPreviews} />
+            {videoList.map((video) => {
+              if (!video.slug) {
+                return singleVideo(video);
+              }
+
+              if (video.slug && !slugs[video.slug]) {
+                return multipleVideo(video);
+              }
+
+              return null;
+            })}
+          </div>
+          <div className="AdminPanel__videos-display">
+            {activeVideo && (
+              <AdminDisplay videos={videoList} video={activeVideo} db={db} storage={storage} videoPreviews={videoPreviews} />
+            )}
+          </div>
+        </div>
+      )}
+      {activeTab === 'general' && (
+        <AdminGeneral images={images} storage={storage} updateImages={updateImages} resume={resume} />
+      )}
     </div>
   );
 };
@@ -310,4 +341,13 @@ AdminPanel.propTypes = {
     name: PropTypes.string,
     url: PropTypes.string,
   })).isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  })).isRequired,
+  updateImages: PropTypes.func.isRequired,
+  resume: PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
 };

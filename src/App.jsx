@@ -6,7 +6,6 @@ import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
 import {
   getFirestore,
   collection,
-  // getDocs,
   query,
   onSnapshot,
 } from 'firebase/firestore';
@@ -27,7 +26,9 @@ export const App = () => {
   const [db] = useState(getFirestore());
   const [storage] = useState(getStorage());
   const [videos, setVideos] = useState([]);
+  const [images, setImages] = useState([]);
   const [videoPreviews, setVideoPreviews] = useState([]);
+  const [resume, setResume] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -62,6 +63,48 @@ export const App = () => {
     }
   };
 
+  const updateImages = async() => {
+    const imagesRef = ref(storage, '/images/');
+
+    try {
+      const res = await listAll(imagesRef);
+
+      const resList = res.items.map(itemRef => (
+        getDownloadURL(itemRef)
+          .then(url => ({
+            name: itemRef.name,
+            url,
+          }))
+      ));
+
+      Promise.all(resList)
+        .then(loadedImages => setImages(loadedImages));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateResume = async() => {
+    const resumeRef = ref(storage, '/resume/');
+
+    try {
+      const res = await listAll(resumeRef);
+
+      const resList = res.items.map(itemRef => (
+        getDownloadURL(itemRef)
+          .then(url => ({
+            name: itemRef.name,
+            url,
+          }))
+      ));
+
+      Promise.all(resList)
+        .then(loadedResume => setResume(loadedResume));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const updateVideos = () => {
     const q = query(collection(db, 'videos'));
 
@@ -77,6 +120,8 @@ export const App = () => {
 
       setVideos(videoList);
       updatePreviews();
+      updateImages();
+      updateResume();
     });
   };
 
@@ -100,12 +145,15 @@ export const App = () => {
         <Home
           setActiveItem={setActiveItem}
           isActive={activePath === ''}
+          images={images}
           hideMenu={hideMenu}
         />
         <About
           isActive={activePath === 'about'}
           hideMenu={hideMenu}
           activePath={activePath}
+          images={images}
+          resume={resume?.[0]}
         />
         <Portfolio
           isActive={activePath === 'portfolio'}
@@ -127,7 +175,10 @@ export const App = () => {
           isLogedIn={isLogedIn}
           activePath={activePath}
           videos={videos}
+          images={images}
           videoPreviews={videoPreviews}
+          updateImages={updateImages}
+          resume={resume?.[0]}
         />
       </Route>
     </div>

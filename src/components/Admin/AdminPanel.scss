@@ -5,6 +5,36 @@
   width: 100%;
   max-width: 1400px;
 
+  &__tabs {
+    max-width: 300px;
+    margin: -50px auto 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    height: 40px;
+    border-radius: 30px;
+    background: #404040;
+    color: #8c8c8c;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      background: #595959;
+    }
+
+    &--active {
+      background: #595959;
+    }
+  }
+
   &__videos {
     display: flex;
   }

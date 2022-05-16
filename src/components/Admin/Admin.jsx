@@ -2,11 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { signOut } from 'firebase/auth';
 import { LoginForm } from './LoginForm';
 import { AdminPanel } from './AdminPanel';
 import './Admin.scss';
 
-export const Admin = ({ isActive, hideMenu, isLogedIn, auth, db, storage, activePath, videos, videoPreviews }) => {
+export const Admin = ({ isActive, hideMenu, isLogedIn, auth, db, storage, activePath, videos, images, videoPreviews, updateImages, resume }) => {
   const [isShown, setIsShown] = useState(false);
   const [isMount, setIsMount] = useState(false);
 
@@ -21,6 +22,16 @@ export const Admin = ({ isActive, hideMenu, isLogedIn, auth, db, storage, active
   useEffect(() => {
     setIsMount(true);
   }, []);
+
+  const userSignOut = () => {
+    signOut(auth).then(() => {
+      // eslint-disable-next-line no-console
+      console.log('user signed out');
+    }).catch((error) => {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    });
+  };
 
   return (
     <section
@@ -40,9 +51,29 @@ export const Admin = ({ isActive, hideMenu, isLogedIn, auth, db, storage, active
         <h3 className="Admin__sub-title">
           {isLogedIn ? ' Configure your site data' : 'Write your email and password'}
         </h3>
+        {isLogedIn && (
+          <button
+            className="Admin__logout-btn"
+            onClick={userSignOut}
+            type="button"
+            aria-label="Logout"
+          >
+            Logout
+          </button>
+        )}
       </div>
       {!isLogedIn && <LoginForm auth={auth} />}
-      {isLogedIn && <AdminPanel videos={videos} db={db} storage={storage} videoPreviews={videoPreviews} />}
+      {isLogedIn && (
+        <AdminPanel
+          videos={videos}
+          db={db}
+          storage={storage}
+          videoPreviews={videoPreviews}
+          images={images}
+          updateImages={updateImages}
+          resume={resume}
+        />
+      )}
     </section>
   );
 };
@@ -73,4 +104,13 @@ Admin.propTypes = {
     name: PropTypes.string,
     url: PropTypes.string,
   })).isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  })).isRequired,
+  updateImages: PropTypes.func.isRequired,
+  resume: PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
 };
