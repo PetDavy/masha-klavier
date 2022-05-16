@@ -13,7 +13,7 @@ import { getTopOrder, getTopListOrder } from '../../utils/orderUtils';
 import { AdminGeneral } from './AdminGeneral';
 import './AdminPanel.scss';
 
-export const AdminPanel = ({ videos, db, storage, videoPreviews, images, updateImages }) => {
+export const AdminPanel = ({ videos, db, storage, videoPreviews, images, updateImages, resume }) => {
   const [activeVideo, setActiveVideo] = useState(null);
   const [deletVideo, setDeletVideo] = useState(null);
   const [videoList, setVideoList] = useState([]);
@@ -315,7 +315,7 @@ export const AdminPanel = ({ videos, db, storage, videoPreviews, images, updateI
         </div>
       )}
       {activeTab === 'general' && (
-        <AdminGeneral images={images} storage={storage} updateImages={updateImages} />
+        <AdminGeneral images={images} storage={storage} updateImages={updateImages} resume={resume} />
       )}
     </div>
   );
@@ -346,4 +346,8 @@ AdminPanel.propTypes = {
     url: PropTypes.string,
   })).isRequired,
   updateImages: PropTypes.func.isRequired,
+  resume: PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
 };

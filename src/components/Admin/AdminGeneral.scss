@@ -1,3 +1,6 @@
+@import '../../assets/vars.scss';
+
+
 .AdminGeneral {
   &__content-block {
     margin-bottom: 20px;
@@ -94,5 +97,26 @@
     font-size: 12px;
     font-weight: bold;
     cursor: pointer;
+  }
+
+
+  &__resume-btn {
+    padding: 15px 20px;
+    display: block;
+    text-decoration: none;
+    border: none;
+    background: $primary-color;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+    max-width: 180px;
+    text-align: center;
+
+    &--watch {
+      background-color: #f6be55;
+    }
   }
 }

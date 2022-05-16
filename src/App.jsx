@@ -178,6 +178,7 @@ export const App = () => {
           images={images}
           videoPreviews={videoPreviews}
           updateImages={updateImages}
+          resume={resume?.[0]}
         />
       </Route>
     </div>
