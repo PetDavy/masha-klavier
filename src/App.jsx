@@ -42,11 +42,6 @@ export const App = () => {
     updateVideos();
   }, []);
 
-  useEffect(() => {
-    // log all states
-    console.log('activePath', activePath);
-  }, [activePath]);
-
   const updatePreviews = async() => {
     const photosRef = ref(storage, '/video-previews/');
 
