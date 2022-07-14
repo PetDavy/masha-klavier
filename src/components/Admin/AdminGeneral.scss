@@ -14,6 +14,10 @@
 
   &__showcase-list {
     display: flex;
+
+    @media (max-width: 750px) {
+      flex-direction: column;
+    }
   }
 
   &__showcase-item {

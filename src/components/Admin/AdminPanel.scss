@@ -11,6 +11,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 750px) {
+      margin: -50px auto 80px;
+    }
   }
 
   &__tab {
@@ -37,12 +41,21 @@
 
   &__videos {
     display: flex;
+    
+    @media (max-width: 750px) {
+      flex-direction: column;
+    }
   }
 
   &__videos-list {
     position: relative;
     flex: 2 0;
     margin-right: 40px;
+
+    @media (max-width: 750px) {
+      margin-right: 0;
+      margin-bottom: 40px;
+    }
   }
 
   &__video {
