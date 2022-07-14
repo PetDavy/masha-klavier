@@ -10,7 +10,6 @@ export const MenuItem = (props) => {
     isActive,
     delay,
     setIsOpen,
-    // setActivePath,
     id,
   } = props;
   const [name, iconClass] = block;
@@ -66,6 +65,5 @@ MenuItem.propTypes = {
   isActive: PropTypes.bool.isRequired,
   delay: PropTypes.number.isRequired,
   setIsOpen: PropTypes.func.isRequired,
-  // setActivePath: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
 };

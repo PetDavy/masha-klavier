@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
-import { Route, useHistory } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage';
 import {
@@ -18,9 +18,9 @@ import { Admin } from './components/Admin';
 import './App.scss';
 
 export const App = () => {
-  const [activeItem, setActiveItem] = useState(0);
-  const [activePath, setActivePath] = useState('');
+  const [activePath, setActivePath] = useState('default');
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [pathUpdatedFlag, setPathUpdatedFlag] = useState(false);
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [auth] = useState(getAuth());
   const [db] = useState(getFirestore());
@@ -135,18 +135,17 @@ export const App = () => {
         <Navigation
           isOpen={isOpenMenu}
           setIsOpen={setIsOpenMenu}
-          activeItem={activeItem}
           isLogedIn={isLogedIn}
-          setActiveItem={setActiveItem}
-          path={useHistory().location.pathname}
           activePath={activePath}
           setActivePath={setActivePath}
+          pathUpdatedFlag={pathUpdatedFlag}
         />
         <Home
-          setActiveItem={setActiveItem}
           isActive={activePath === ''}
           images={images}
           hideMenu={hideMenu}
+          pathUpdatedFlag={pathUpdatedFlag}
+          setPathUpdatedFlag={setPathUpdatedFlag}
         />
         <About
           isActive={activePath === 'about'}

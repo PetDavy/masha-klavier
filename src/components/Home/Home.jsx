@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { TypingText } from './TypingText';
 import { HomeOverlay } from './HomeOverlay';
 import './Home.scss';
 
-export const Home = ({ setActiveItem, isActive, images, hideMenu }) => {
+// eslint-disable-next-line max-len
+export const Home = ({ isActive, images, hideMenu, pathUpdatedFlag, setPathUpdatedFlag }) => {
   const [isShown, setIsShown] = useState(false);
   const [onBgChange, setOnBgChange] = useState(false);
   const [isMount, setIsMount] = useState(false);
   const [showcaseImages, setShowcaseImages] = useState([]);
   const [bg, setBg] = useState('');
+
+  const history = useHistory();
 
   useEffect(() => {
     setOnBgChange(true);
@@ -66,6 +70,11 @@ export const Home = ({ setActiveItem, isActive, images, hideMenu }) => {
     });
   };
 
+  const triggerLink = (newPath) => {
+    history.push(`/${newPath}`);
+    setPathUpdatedFlag(!pathUpdatedFlag);
+  };
+
   return (
     <section
       className={classNames('Home', {
@@ -94,7 +103,7 @@ export const Home = ({ setActiveItem, isActive, images, hideMenu }) => {
 
         <div className="Home__buttons">
           <button
-            onClick={() => setActiveItem(1)}
+            onClick={() => triggerLink('about')}
             type="button"
             className="btn btn--acting Home__btn-about"
           >
@@ -102,7 +111,7 @@ export const Home = ({ setActiveItem, isActive, images, hideMenu }) => {
             <span>more about me</span>
           </button>
           <button
-            onClick={() => setActiveItem(2)}
+            onClick={() => triggerLink('portfolio')}
             type="button"
             className="btn btn--acting Home__btn-portfolio"
           >
@@ -116,11 +125,15 @@ export const Home = ({ setActiveItem, isActive, images, hideMenu }) => {
 };
 
 Home.propTypes = {
-  setActiveItem: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
+  // setIsOpen: PropTypes.func.isRequired,
+  // path: PropTypes.string.isRequired,
+  // setActivePath: PropTypes.func.isRequired,
   images: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     url: PropTypes.string,
   })).isRequired,
   hideMenu: PropTypes.func.isRequired,
+  pathUpdatedFlag: PropTypes.bool.isRequired,
+  setPathUpdatedFlag: PropTypes.func.isRequired,
 };
