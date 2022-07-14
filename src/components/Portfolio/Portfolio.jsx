@@ -8,6 +8,7 @@ import './Portfolio.scss';
 
 export const Portfolio = ({ isActive, hideMenu, activePath, videos }) => {
   const [isShown, setIsShown] = useState(false);
+  const [isMount, setIsMount] = useState(false);
   const [onPlayMode, setOnPlayMode] = useState(false);
   const [activVideo, setActiveVideo] = useState({});
   const [activVideoList, setActiveVideoLIst] = useState([]);
@@ -16,13 +17,17 @@ export const Portfolio = ({ isActive, hideMenu, activePath, videos }) => {
   useEffect(() => {
     if (isActive) {
       setIsShown(true);
-    } else {
+    } else if (isMount) {
       setTimeout(() => {
         setIsShown(false);
         setOnPlayMode(false);
       }, 1000);
     }
   }, [isActive]);
+
+  useEffect(() => {
+    setIsMount(true);
+  }, []);
 
   const openVideoPlayer = (video, videoList) => {
     setOnPlayMode(true);

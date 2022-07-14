@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { MenuItem } from './MenuItem';
@@ -16,12 +17,13 @@ export const Navigation = (props) => {
     isOpen,
     setIsOpen,
     isLogedIn,
-    path,
     activePath,
     setActivePath,
+    pathUpdatedFlag,
   } = props;
 
   const [menuBlocks, setMenuBlocks] = useState(MENU_BLOCKS);
+  const history = useHistory();
 
   useEffect(() => {
     if (isLogedIn) {
@@ -36,14 +38,14 @@ export const Navigation = (props) => {
 
   useEffect(() => {
     setPath();
-  }, [path]);
+  }, [isOpen, pathUpdatedFlag]);
 
   const triggerNavigation = () => {
     setIsOpen(!isOpen);
   };
 
   const setPath = () => {
-    setActivePath(path.replace('/', ''));
+    setActivePath(history.location.pathname.replace('/', ''));
   };
 
   return (
@@ -79,7 +81,6 @@ export const Navigation = (props) => {
               }
               delay={100 + i * 50}
               setIsOpen={setIsOpen}
-              setActivePath={setActivePath}
               id={block[0].toLocaleLowerCase()}
               key={block[0]}
             />
@@ -104,7 +105,7 @@ Navigation.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,
   isLogedIn: PropTypes.bool.isRequired,
-  path: PropTypes.string.isRequired,
   activePath: PropTypes.string.isRequired,
   setActivePath: PropTypes.func.isRequired,
+  pathUpdatedFlag: PropTypes.bool.isRequired,
 };
